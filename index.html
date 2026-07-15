@@ -3,30 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CookiePoof — Auto-delete tracking cookies</title>
+  <title>CookiePoof — Auto-delete tracking cookies | Chrome Extension</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
-    .container { max-width: 680px; margin: 0 auto; padding: 60px 24px; }
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
     .hero { text-align: center; margin-bottom: 48px; }
     .logo { font-size: 48px; margin-bottom: 8px; }
     h1 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-    .tagline { font-size: 18px; color: #666; margin-bottom: 24px; }
+    .tagline { font-size: 18px; color: #666; margin-bottom: 16px; }
+    .description { font-size: 15px; color: #555; max-width: 520px; margin: 0 auto 24px; }
     .badge { display: inline-block; background: #4ecca3; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
-    .features { margin-bottom: 48px; }
-    .features h2 { font-size: 20px; margin-bottom: 16px; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
+    h3 { font-size: 16px; margin-bottom: 12px; color: #555; }
+    .problem { background: #fff3f3; border-radius: 12px; padding: 20px; margin-bottom: 40px; }
+    .problem h2 { border: none; padding: 0; margin-bottom: 12px; }
+    .problem p { font-size: 14px; color: #666; }
     .feature-list { list-style: none; }
-    .feature-list li { padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; }
+    .feature-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+    .feature-list li:last-child { border: none; }
     .feature-list li span { margin-right: 8px; }
-    .pricing { background: white; border-radius: 12px; padding: 24px; margin-bottom: 48px; border: 1px solid #eee; }
-    .pricing h2 { font-size: 20px; margin-bottom: 16px; }
-    .price-row { display: flex; justify-content: space-between; padding: 8px 0; }
-    .price-label { color: #666; }
-    .price-value { font-weight: 600; }
-    .footer { text-align: center; font-size: 13px; color: #999; }
+    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+    .plan { background: white; border-radius: 12px; padding: 24px; border: 1px solid #eee; }
+    .plan-pro { border-color: #4ecca3; }
+    .plan h3 { margin-bottom: 16px; }
+    .plan .price { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+    .plan .price-note { font-size: 12px; color: #999; margin-bottom: 16px; }
+    .plan ul { list-style: none; font-size: 13px; }
+    .plan ul li { padding: 4px 0; }
+    .plan ul li::before { content: "✓ "; color: #4ecca3; font-weight: bold; }
+    .plan-pro ul li.highlight { font-weight: 600; }
+    .how { background: white; border-radius: 12px; padding: 24px; border: 1px solid #eee; }
+    .how ol { padding-left: 20px; }
+    .how li { padding: 6px 0; font-size: 14px; }
+    .tech { font-size: 13px; color: #888; margin-top: 8px; }
+    .footer { text-align: center; font-size: 13px; color: #999; margin-top: 40px; }
     .footer a { color: #4ecca3; text-decoration: none; }
     .footer a:hover { text-decoration: underline; }
-    .by-tizz { margin-top: 24px; font-size: 12px; color: #bbb; text-align: center; }
+    .by-tizz { margin-top: 16px; font-size: 12px; color: #bbb; text-align: center; }
+    @media (max-width: 600px) { .plans { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -35,41 +51,95 @@
       <div class="logo">🍪💨</div>
       <h1>CookiePoof</h1>
       <p class="tagline">Poof! Cookies vanish when you close tabs.</p>
-      <span class="badge">Chrome Extension</span>
+      <p class="description">A Chrome extension that automatically deletes tracking cookies when you close browser tabs — keeping your browsing private without any effort.</p>
+      <span class="badge">Chrome Extension · MV3</span>
     </div>
 
-    <div class="features">
+    <div class="problem">
+      <h2>🤔 The Problem</h2>
+      <p>Every website drops tracking cookies that follow you across the internet. Popular alternatives like Cookie AutoDelete and EditThisCookie stopped working after Chrome's Manifest V2 deprecation in 2025. CookiePoof is built from scratch on Manifest V3 — it works today and will keep working.</p>
+    </div>
+
+    <section>
+      <h2>How It Works</h2>
+      <div class="how">
+        <ol>
+          <li><strong>Install</strong> — works immediately, zero configuration needed</li>
+          <li><strong>Browse normally</strong> — CookiePoof runs silently in the background</li>
+          <li><strong>Close a tab</strong> — tracking cookies from that site are instantly deleted</li>
+          <li><strong>Stay logged in</strong> — login cookies (sessions, auth tokens) are protected automatically</li>
+        </ol>
+        <p class="tech">Built on Chrome Manifest V3. No content scripts. No remote code. Minimal permissions.</p>
+      </div>
+    </section>
+
+    <section>
       <h2>Features</h2>
+      <h3>Free</h3>
       <ul class="feature-list">
-        <li><span>🗑️</span> Auto-delete tracking cookies on tab close</li>
-        <li><span>🔐</span> Login protection — keeps your sessions safe</li>
-        <li><span>🛡️</span> Whitelist trusted sites</li>
-        <li><span>📊</span> Weekly privacy report</li>
-        <li><span>⏰</span> Scheduled auto-cleanup (Pro)</li>
-        <li><span>🧹</span> One-click full clean (Pro)</li>
-        <li><span>🔕</span> Silent mode — no notifications (Pro)</li>
+        <li><span>🗑️</span> Auto-delete tracking cookies on tab close (10/day)</li>
+        <li><span>🔐</span> Login protection — sessions, auth tokens, httpOnly cookies preserved</li>
+        <li><span>🛡️</span> Whitelist up to 3 trusted sites</li>
+        <li><span>📊</span> Basic weekly stats</li>
+        <li><span>🔔</span> Sound notification on delete</li>
+        <li><span>⚡</span> One-click manual delete for current site</li>
       </ul>
+      <h3 style="margin-top: 20px;">Pro</h3>
+      <ul class="feature-list">
+        <li><span>♾️</span> Unlimited auto-deletions (no daily limit)</li>
+        <li><span>🛡️</span> Unlimited whitelist sites</li>
+        <li><span>📊</span> Full weekly report — Privacy Score, top trackers, daily chart</li>
+        <li><span>🧹</span> One-click full clean (cookies + cache + localStorage)</li>
+        <li><span>⏰</span> Auto-schedule cleanup (every 5min to 6 hours)</li>
+        <li><span>🔕</span> Silent mode — no sounds, no badge notifications</li>
+        <li><span>🚫</span> No upgrade banners</li>
+      </ul>
+    </section>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <div class="price-note">Forever free</div>
+        <ul>
+          <li>Auto-delete on tab close</li>
+          <li>Login protection</li>
+          <li>3 whitelisted sites</li>
+          <li>10 deletions/day</li>
+          <li>Basic stats</li>
+        </ul>
+      </div>
+      <div class="plan plan-pro">
+        <h3>Pro ⭐</h3>
+        <div class="price">$2.49<span style="font-size:14px;font-weight:normal">/mo</span></div>
+        <div class="price-note">or $19.99/year (save 33%)</div>
+        <ul>
+          <li class="highlight">Unlimited deletions</li>
+          <li class="highlight">Unlimited whitelist</li>
+          <li>Full privacy report</li>
+          <li>One-click full clean</li>
+          <li>Auto-schedule</li>
+          <li>Silent mode</li>
+          <li>No banners</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="pricing">
-      <h2>Pricing</h2>
-      <div class="price-row">
-        <span class="price-label">Free</span>
-        <span class="price-value">Core features included</span>
-      </div>
-      <div class="price-row">
-        <span class="price-label">Pro Monthly</span>
-        <span class="price-value">$2.49/mo</span>
-      </div>
-      <div class="price-row">
-        <span class="price-label">Pro Yearly</span>
-        <span class="price-value">$19.99/yr (save 33%)</span>
-      </div>
-    </div>
+    <section>
+      <h2>Technical Details</h2>
+      <ul class="feature-list">
+        <li><span>📦</span> Extension size: under 500KB</li>
+        <li><span>⚡</span> Zero CPU usage when idle (event-driven Service Worker)</li>
+        <li><span>🔒</span> All data stored locally — nothing sent to external servers</li>
+        <li><span>🌐</span> No content scripts injected into pages</li>
+        <li><span>✅</span> Chrome Manifest V3 compliant</li>
+        <li><span>💳</span> Payments processed securely by Lemon Squeezy</li>
+      </ul>
+    </section>
 
     <div class="footer">
-      <p><a href="privacy.html">Privacy Policy</a></p>
-      <p style="margin-top: 8px;">Contact: from.tizz@proton.me</p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="mailto:from.tizz@proton.me">Contact</a></p>
+      <p style="margin-top: 8px;">Available on the Chrome Web Store (coming soon)</p>
     </div>
 
     <p class="by-tizz">Made by Tizz</p>
