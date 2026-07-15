@@ -43,9 +43,41 @@
     .footer a:hover { text-decoration: underline; }
     .by-tizz { margin-top: 16px; font-size: 12px; color: #bbb; text-align: center; }
     @media (max-width: 600px) { .plans { grid-template-columns: 1fr; } }
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) { background: #1a1a1e; color: #e0ddd9; }
+      body:not([data-theme="light"]) .problem { background: #2a1e1e; }
+      body:not([data-theme="light"]) .plan { background: #242428; border-color: #3a3a40; }
+      body:not([data-theme="light"]) .plan-pro { border-color: #4ecca3; }
+      body:not([data-theme="light"]) .how { background: #242428; border-color: #3a3a40; }
+      body:not([data-theme="light"]) h2 { border-color: #3a3a40; }
+      body:not([data-theme="light"]) .feature-list li { border-color: #3a3a40; }
+      body:not([data-theme="light"]) .tagline, body:not([data-theme="light"]) .description { color: #a8a4a0; }
+      body:not([data-theme="light"]) .tech { color: #7a7672; }
+      body:not([data-theme="light"]) .footer { color: #7a7672; }
+      body:not([data-theme="light"]) .by-tizz { color: #5a5652; }
+      body:not([data-theme="light"]) .price-note { color: #7a7672; }
+    }
+    body[data-theme="dark"] { background: #1a1a1e; color: #e0ddd9; }
+    body[data-theme="dark"] .problem { background: #2a1e1e; }
+    body[data-theme="dark"] .plan { background: #242428; border-color: #3a3a40; }
+    body[data-theme="dark"] .plan-pro { border-color: #4ecca3; }
+    body[data-theme="dark"] .how { background: #242428; border-color: #3a3a40; }
+    body[data-theme="dark"] h2 { border-color: #3a3a40; }
+    body[data-theme="dark"] .feature-list li { border-color: #3a3a40; }
+    body[data-theme="dark"] .tagline, body[data-theme="dark"] .description { color: #a8a4a0; }
+    body[data-theme="dark"] .tech { color: #7a7672; }
+    body[data-theme="dark"] .footer { color: #7a7672; }
+    body[data-theme="dark"] .by-tizz { color: #5a5652; }
+    body[data-theme="dark"] .price-note { color: #7a7672; }
+    /* Theme toggle */
+    .theme-toggle { position: fixed; top: 16px; right: 16px; background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 6px 10px; font-size: 16px; cursor: pointer; z-index: 100; transition: all 0.2s; }
+    .theme-toggle:hover { background: #f5f5f5; }
+    body[data-theme="dark"] .theme-toggle, @media (prefers-color-scheme: dark) { .theme-toggle { background: #2e2e33; border-color: #4a4a52; } .theme-toggle:hover { background: #3a3a40; } }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌗</button>
   <div class="container">
     <div class="hero">
       <div class="logo">🍪💨</div>
@@ -79,11 +111,12 @@
       <ul class="feature-list">
         <li><span>🗑️</span> Auto-delete tracking cookies on tab close (10/day)</li>
         <li><span>🔐</span> Login protection — sessions, auth tokens, httpOnly cookies preserved</li>
-        <li><span>🛡️</span> Whitelist up to 3 trusted sites</li>
+        <li><span>🛡️</span> Whitelist up to 5 trusted sites</li>
         <li><span>⚡</span> One-click manual delete for current site</li>
         <li><span>🔢</span> Deletion counter in popup</li>
         <li><span>🔔</span> Sound notification on delete</li>
         <li><span>📊</span> Weekly report preview (blurred — unlock with Pro)</li>
+        <li><span>🌗</span> Dark mode (auto-detect + manual toggle)</li>
       </ul>
       <h3 style="margin-top: 20px;">Pro</h3>
       <ul class="feature-list">
@@ -105,7 +138,7 @@
         <ul>
           <li>Auto-delete on tab close</li>
           <li>Login protection</li>
-          <li>3 whitelisted sites</li>
+          <li>5 whitelisted sites</li>
           <li>10 deletions/day</li>
           <li>Deletion counter</li>
           <li>Report preview (blurred)</li>
@@ -113,8 +146,8 @@
       </div>
       <div class="plan plan-pro">
         <h3>Pro ⭐</h3>
-        <div class="price">$2.49<span style="font-size:14px;font-weight:normal">/mo</span></div>
-        <div class="price-note">or $19.99/year (save 33%)</div>
+        <div class="price">$1.49<span style="font-size:14px;font-weight:normal">/mo</span></div>
+        <div class="price-note">$9.99/year (save 44%) · $29.99 lifetime</div>
         <ul>
           <li class="highlight">Unlimited deletions</li>
           <li class="highlight">Unlimited whitelist</li>
@@ -146,5 +179,26 @@
 
     <p class="by-tizz">Made by Tizz</p>
   </div>
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const themes = ['auto', 'light', 'dark'];
+    const icons = { auto: '🌗', light: '☀️', dark: '🌙' };
+    let current = localStorage.getItem('cookiepoof_site_theme') || 'auto';
+
+    function applyTheme(t) {
+      if (t === 'dark') document.body.setAttribute('data-theme', 'dark');
+      else if (t === 'light') document.body.setAttribute('data-theme', 'light');
+      else document.body.removeAttribute('data-theme');
+      toggle.textContent = icons[t];
+    }
+    applyTheme(current);
+
+    toggle.addEventListener('click', () => {
+      const idx = (themes.indexOf(current) + 1) % themes.length;
+      current = themes[idx];
+      localStorage.setItem('cookiepoof_site_theme', current);
+      applyTheme(current);
+    });
+  </script>
 </body>
 </html>
