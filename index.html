@@ -34,6 +34,17 @@
     .plan ul li { padding: 4px 0; }
     .plan ul li::before { content: "✓ "; color: #4ecca3; font-weight: bold; }
     .plan-pro ul li.highlight { font-weight: 600; }
+    .buy-group { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+    .buy-btn { display: block; text-align: center; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; color: #4ecca3; border: 1px solid #4ecca3; transition: all 0.15s; }
+    .buy-btn:hover { background: #4ecca3; color: #fff; }
+    .buy-primary { background: #4ecca3; color: #fff; font-size: 14px; }
+    .buy-primary:hover { background: #3db88f; border-color: #3db88f; }
+    .buy-note { font-size: 11px; color: #999; margin-top: 10px; text-align: center; line-height: 1.5; }
+    .buy-note a { color: #4ecca3; }
+    .install-cta { margin-top: 24px; }
+    .install-btn { display: inline-block; padding: 14px 32px; border-radius: 10px; background: #4ecca3; color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; transition: all 0.15s; }
+    .install-btn:hover { background: #3db88f; transform: translateY(-1px); }
+    .install-note { font-size: 12px; color: #999; margin-top: 10px; }
     .how { background: white; border-radius: 12px; padding: 24px; border: 1px solid #eee; }
     .how ol { padding-left: 20px; }
     .how li { padding: 6px 0; font-size: 14px; }
@@ -85,6 +96,10 @@
       <p class="tagline">Poof! Cookies vanish when you close tabs.</p>
       <p class="description">A Chrome extension that automatically deletes tracking cookies when you close browser tabs — keeping your browsing private without any effort.</p>
       <span class="badge">Chrome Extension · MV3</span>
+      <div class="install-cta">
+        <a class="install-btn" href="https://chromewebstore.google.com/detail/cookiepoof/hipejmeeogdfljigpchlkjocbfnnofpe">Add to Chrome — Free</a>
+        <p class="install-note">Free forever. No account needed. Works instantly.</p>
+      </div>
     </div>
 
     <div class="problem">
@@ -157,6 +172,12 @@
           <li>Silent mode</li>
           <li>No banners</li>
         </ul>
+        <div class="buy-group">
+          <a class="buy-btn buy-primary" href="https://tizz.lemonsqueezy.com/checkout/buy/77ad6ddf-e908-4db2-935b-cdf54854b731?enabled=1949509">Get Pro — $14.99/year</a>
+          <a class="buy-btn" href="https://tizz.lemonsqueezy.com/checkout/buy/c98c7322-02cf-432a-a13c-b25b292031a9?enabled=1949555">$34.99 lifetime</a>
+          <a class="buy-btn" href="https://tizz.lemonsqueezy.com/checkout/buy/5af83250-aea6-4dae-9d9f-547cc007607a?enabled=1949544">$2.99/month</a>
+        </div>
+        <p class="buy-note"><a href="https://chromewebstore.google.com/detail/cookiepoof/hipejmeeogdfljigpchlkjocbfnnofpe">Install the extension</a> first, then paste your license key. <a href="activate.html">How activation works</a></p>
       </div>
     </div>
 
@@ -173,8 +194,8 @@
     </section>
 
     <div class="footer">
-      <p><a href="privacy.html">Privacy Policy</a> · <a href="mailto:from.tizz@proton.me">Contact</a></p>
-      <p style="margin-top: 8px;">Available on the Chrome Web Store (coming soon)</p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="activate.html">Activate Pro</a> · <a href="mailto:from.tizz@proton.me">Contact</a></p>
+      <p style="margin-top: 8px;">Available on the <a href="https://chromewebstore.google.com/detail/cookiepoof/hipejmeeogdfljigpchlkjocbfnnofpe">Chrome Web Store</a></p>
     </div>
 
     <p class="by-tizz">Made by Tizz</p>
